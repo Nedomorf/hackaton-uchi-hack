@@ -9,21 +9,12 @@ body{
 }
 
 .content{
-    display: flex;
     font-size: 20px;
     text-align: left;
-    min-height: 500px;
 }
 
 .main{
-    width: 75%;
     padding: 15px;
     background: darkgray;
-
-}
-
-.categories{
-    padding: 15px;
-    width: 25%;
-    background: grey;
+    min-height: 500px;
 }
