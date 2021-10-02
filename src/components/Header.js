@@ -2,7 +2,13 @@ import React, {useEffect, useState} from "react";
 import styles from './Header.module.css';
 import {api} from "../api";
 import {useDispatch, useSelector} from "react-redux";
-import {setSearchInfoThunk} from "../store/reducers/search";
+import {
+    setExelInfoThunk,
+    setImgInfoThunk,
+    setPdfInfoThunk, setPPTInfoThunk,
+    setSearchInfoThunk,
+    setVideoInfoThunk, setWordInfoThunk
+} from "../store/reducers/search";
 
 
 function Header() {
@@ -17,21 +23,46 @@ function Header() {
     const [input, setInput] = useState('');
     const [transformedQuery, setTransformedQuery] = useState('');
 
-    const searchInfo = useSelector((state) => state.SearchReducer.searchInfo)
+
+    const isFetching = useSelector((state) => state.SearchReducer.isFetching)
     const dispatch = useDispatch()
 
-    useEffect(() => {
-/*
-        api.getPPT('соня+мармедадова')
-*/
-    })
 
+    function renameQuery(query) {
+       return query.replace(/ /g, "+").toLowerCase()
+    }
 
     function search() {
         if (!input) {
             return
         }
-        dispatch(setSearchInfoThunk(input.replace(/ /g, "+").toLowerCase()));
+        if (isArticlesChecked) {
+            dispatch(setSearchInfoThunk(renameQuery(input)));
+        }
+
+        if (isVideosChecked) {
+            dispatch(setVideoInfoThunk(renameQuery(input)));
+        }
+
+        if (isPhotoChecked) {
+            dispatch(setImgInfoThunk(renameQuery(input)));
+        }
+
+        if (isExcelChecked) {
+            dispatch(setExelInfoThunk(renameQuery(input)))
+        }
+
+        if (isPdfChecked) {
+            dispatch(setPdfInfoThunk(renameQuery(input)))
+        }
+
+        if (isWordChecked) {
+            dispatch(setWordInfoThunk(renameQuery(input)))
+        }
+
+        if (isPowerpointChecked) {
+            dispatch(setPPTInfoThunk(renameQuery(input)))
+        }
     }
 
     function onKeyDownInput(e) {
@@ -40,9 +71,6 @@ function Header() {
         }
     }
 
-    function onClickChevron() {
-        setChevron(!activeChevron);
-    }
 
     return (
         <div className={styles.main}>
@@ -54,8 +82,7 @@ function Header() {
                          height='26px'
                     />
                 </div>
-                <input type="text" className={styles.searchInput} placeholder='Search...'/>
-                {/*(!activeChevron && styles.chevronReverse)*/}
+                <input type="text" value={input} onKeyDown={onKeyDownInput} onChange={(e) => setInput(e.currentTarget.value)} className={styles.searchInput} placeholder='Search...'/>
                 <div onClick={() => setChevron(!activeChevron)}
                      className={`${styles.chevron} ${!activeChevron && styles.chevronReverse}`}>
                     <img src="https://www.svgrepo.com/show/183224/chevron.svg"
