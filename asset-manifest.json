@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/hackaton-uchi-hack/static/css/main.87a22fc2.chunk.css",
+    "main.js": "/hackaton-uchi-hack/static/js/main.5fe4b7d5.chunk.js",
+    "main.js.map": "/hackaton-uchi-hack/static/js/main.5fe4b7d5.chunk.js.map",
+    "runtime-main.js": "/hackaton-uchi-hack/static/js/runtime-main.d9e52849.js",
+    "runtime-main.js.map": "/hackaton-uchi-hack/static/js/runtime-main.d9e52849.js.map",
+    "static/js/2.1e9adc67.chunk.js": "/hackaton-uchi-hack/static/js/2.1e9adc67.chunk.js",
+    "static/js/2.1e9adc67.chunk.js.map": "/hackaton-uchi-hack/static/js/2.1e9adc67.chunk.js.map",
+    "index.html": "/hackaton-uchi-hack/index.html",
+    "static/css/main.87a22fc2.chunk.css.map": "/hackaton-uchi-hack/static/css/main.87a22fc2.chunk.css.map",
+    "static/js/2.1e9adc67.chunk.js.LICENSE.txt": "/hackaton-uchi-hack/static/js/2.1e9adc67.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d9e52849.js",
+    "static/js/2.1e9adc67.chunk.js",
+    "static/css/main.87a22fc2.chunk.css",
+    "static/js/main.5fe4b7d5.chunk.js"
+  ]
+}
