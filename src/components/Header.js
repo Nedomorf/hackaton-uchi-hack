@@ -21,7 +21,9 @@ function Header() {
     const dispatch = useDispatch()
 
     useEffect(() => {
+/*
         api.getPPT('соня+мармедадова')
+*/
     })
 
 
@@ -197,6 +199,7 @@ function Header() {
                             }
                             PowerPoint
                         </label>
+
                     </div>
                 </div>
             </div>
