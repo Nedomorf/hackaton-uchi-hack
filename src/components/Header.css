@@ -1,0 +1,72 @@
+.wrapper{
+    background: gainsboro;
+    width: 100vw;
+    height: 100vh;
+    min-width: 400px;
+}
+
+.header-container{
+    max-width: 800px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: calc(100vh / 5);
+}
+
+.search-icon{
+    position: relative;
+    left: 34px;
+    padding-top: 5px;
+    vertical-align: bottom;
+}
+
+.search-icon:hover{
+    cursor: pointer;
+}
+
+.search-input{
+    width: 100%;
+    padding: 3px 0 3px 40px;
+    font-size: 26px;
+    border-radius: 8px;
+}
+
+.chevron{
+    position: relative;
+    left: -35px;
+}
+
+.chevron:hover{
+    cursor: pointer;
+}
+
+.chevronReverse img{
+    transform: rotate(180deg);
+}
+
+.categories{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: calc(100vw / 30);
+    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    border: solid black 2px;
+    height: calc(100vh / 3);
+    font-size: 30px;
+}
+
+.checkbox-item label:hover{
+    cursor: pointer;
+}
+
+.checkbox-item input:hover{
+    cursor: pointer;
+}
