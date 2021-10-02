@@ -1,8 +1,35 @@
+import {useState, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+
+import {setSearchInfoThunk} from "../store/reducers/search";
 import './Header.css';
-import {useState} from "react";
+import {api} from "../api";
+
 
 function Header(){
     const [activeChevron, setChevron] = useState(false);
+    const [input, setInput] = useState('');
+    const [transformedQuery, setTransformedQuery] = useState('');
+
+    const searchInfo = useSelector((state) => state.SearchReducer.searchInfo)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        api.getPPT('соня+мармедадова')
+    })
+
+    function search() {
+        if (!input) {
+            return
+        }
+        dispatch(setSearchInfoThunk(input.replace(/ /g,"+").toLowerCase()));
+    }
+
+    function onKeyDownInput(e) {
+        if (e.key === 'Enter') {
+            search();
+        }
+    }
 
     function onClickChevron(){
         setChevron(!activeChevron);
@@ -13,13 +40,19 @@ function Header(){
             <div className="header-container">
                 <div className="box">
                     <div className="search-icon">
-                        <img src="https://www.svgrepo.com/show/18282/search.svg"
+                        <img
+                             onClick={search}
+                             src="https://www.svgrepo.com/show/18282/search.svg"
                              alt="search"
                              width='26px'
                              height='26px'
                         />
                     </div>
-                    <input type="text" className='search-input' placeholder='Search...'/>
+                    <input value={input}
+                           onKeyDown={onKeyDownInput}
+                           onChange={(e) => setInput(e.currentTarget.value)}
+                           type="text" className='search-input'
+                           placeholder='Search...'/>
                     <div onClick={ onClickChevron } className={`chevron${activeChevron?' chevronReverse':''}`}>
                         <img src="https://www.svgrepo.com/show/183224/chevron.svg"
                              alt="chevron"
@@ -28,6 +61,7 @@ function Header(){
                         />
                     </div>
                 </div>
+                {transformedQuery}
 
                 {activeChevron &&
                     <div className="categories">
