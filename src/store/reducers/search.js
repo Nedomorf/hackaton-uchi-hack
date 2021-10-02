@@ -2,10 +2,13 @@ import {api} from "../../api";
 
 const SET_SEARCH_INFO = 'SET_SEARCH_INFO/searchReducer';
 const SET_IS_FEATCHING = 'SET_IS_FEATCHING/searchReducer';
+const SET_VIDEO_INFO= 'SET_VIDEO_INFO/searchReducer';
 
 let initialState = {
     isFetching: null,
     searchInfo: [],
+    videoInfo: [],
+
 }
 
 const SearchReducer = (state = initialState, action) => {
@@ -22,6 +25,7 @@ const SearchReducer = (state = initialState, action) => {
                 isFetching: action.isFetching
             }
         }
+
         default: return  state
     }
 }

@@ -1,5 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from './Header.module.css';
+import {api} from "../api";
+import {useDispatch, useSelector} from "react-redux";
+import {setSearchInfoThunk} from "../store/reducers/search";
 
 
 function Header() {
@@ -21,7 +24,7 @@ function Header() {
         if (!input) {
             return
         }
-        dispatch(setSearchInfoThunk(input.replace(/ /g,"+").toLowerCase()));
+        dispatch(setSearchInfoThunk(input.replace(/ /g, "+").toLowerCase()));
     }
 
     function onKeyDownInput(e) {
@@ -127,55 +130,60 @@ function Header() {
                     <div className={styles.categoriesItem}>
                         <input type="checkbox" id="videos" checked={isVideosChecked} hidden/>
                         <label htmlFor="videos">Videos</label>
-    return(
-        <div className='wrapper'>
-            <div className="header-container">
-                <div className="box">
-                    <div className="search-icon">
-                        <img
-                             onClick={search}
-                             src="https://www.svgrepo.com/show/18282/search.svg"
-                             alt="search"
-                             width='26px'
-                             height='26px'
-                        />
-                    </div>
-                    <input value={input}
-                           onKeyDown={onKeyDownInput}
-                           onChange={(e) => setInput(e.currentTarget.value)}
-                           type="text" className='search-input'
-                           placeholder='Search...'/>
-                    <div onClick={ onClickChevron } className={`chevron${activeChevron?' chevronReverse':''}`}>
-                        <img src="https://www.svgrepo.com/show/183224/chevron.svg"
-                             alt="chevron"
-                             width='26px'
-                             height='26px'
-                        />
-                    </div>
-                </div>
-                {transformedQuery}
+                        return(
+                        <div className='wrapper'>
+                            <div className="header-container">
+                                <div className="box">
+                                    <div className="search-icon">
+                                        <img
+                                            onClick={search}
+                                            src="https://www.svgrepo.com/show/18282/search.svg"
+                                            alt="search"
+                                            width='26px'
+                                            height='26px'
+                                        />
+                                    </div>
+                                    <input value={input}
+                                           onKeyDown={onKeyDownInput}
+                                           onChange={(e) => setInput(e.currentTarget.value)}
+                                           type="text" className='search-input'
+                                           placeholder='Search...'/>
+                                    <div onClick={onClickChevron}
+                                         className={`chevron${activeChevron ? ' chevronReverse' : ''}`}>
+                                        <img src="https://www.svgrepo.com/show/183224/chevron.svg"
+                                             alt="chevron"
+                                             width='26px'
+                                             height='26px'
+                                        />
+                                    </div>
+                                </div>
+                                {transformedQuery}
 
-                {activeChevron &&
-                    <div className="categories">
-                        <div className="checkbox-item">
-                            <input type="checkbox" id='Статьи'/>
-                            <label htmlFor="Статьи">Статьи</label>
-                        </div>
+                                {activeChevron &&
+                                <div className="categories">
+                                    <div className="checkbox-item">
+                                        <input type="checkbox" id='Статьи'/>
+                                        <label htmlFor="Статьи">Статьи</label>
+                                    </div>
 
-                        <div className="checkbox-item">
-                            <input type="checkbox" id='Фото'/>
-                            <label htmlFor="Фото">Фото</label>
-                        </div>
+                                    <div className="checkbox-item">
+                                        <input type="checkbox" id='Фото'/>
+                                        <label htmlFor="Фото">Фото</label>
+                                    </div>
 
-                        <div className="checkbox-item">
-                            <input type="checkbox" id='Видео'/>
-                            <label htmlFor="Видео">Видео</label>
+                                    <div className="checkbox-item">
+                                        <input type="checkbox" id='Видео'/>
+                                        <label htmlFor="Видео">Видео</label>
+                                    </div>
+                                </div>}
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
+            )
+            }
 
-export default Header;
+            export default Header;
