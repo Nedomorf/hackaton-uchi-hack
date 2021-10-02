@@ -129,6 +129,8 @@
 
 .categories {
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     visibility: hidden;
     height: 0;
     width: 50vw;
@@ -146,7 +148,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 12.5vw;
+    width: 10vw;
     height: 10vh;
     font-size: 32px;
     transition: .15s ease;
