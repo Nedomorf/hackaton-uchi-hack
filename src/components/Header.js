@@ -17,7 +17,9 @@ function Header() {
     const dispatch = useDispatch()
 
     useEffect(() => {
+/*
         api.getPPT('соня+мармедадова')
+*/
     })
 
 
@@ -131,7 +133,6 @@ function Header() {
                     <div className={styles.categoriesItem}>
                         <input type="checkbox" id="videos" checked={isVideosChecked} hidden/>
                         <label htmlFor="videos">Videos</label>
-                        return(
                         <div className='wrapper'>
                             <div className="header-container">
                                 <div className="box">
